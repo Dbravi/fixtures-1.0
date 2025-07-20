@@ -1,6 +1,6 @@
 # My Playwright Project
 
-This project is a Playwright-based testing framework designed to facilitate end-to-end testing of web applications. It utilizes the Page Object Model (POM) for better organization and maintainability of test code.
+This project is a Playwright-based testing framework designed to facilitate end-to-end testing of web applications. It utilizes playwright fixtures and the Page Object Model (POM) for better organization and maintainability of test code.
 
 ## Project Structure
 
@@ -44,7 +44,6 @@ my-playwright-project
 ## Usage Examples
 
 - To create a new test, you can add a new file in the `tests` directory and import the necessary page objects and fixtures.
-- Utilize the `ExamplePage` class to interact with the web application and perform actions like navigating, filling forms, and submitting.
 
 ## Contributing
 
