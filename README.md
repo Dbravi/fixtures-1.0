@@ -8,9 +8,9 @@ This project is a Playwright-based testing framework designed to facilitate end-
 my-playwright-project
 ├── src
 │   ├── pages
-│   │   └── examplePage.ts       # Contains the ExamplePage class for page interactions
+│   │   └── Page.ts       # Contains the ExamplePage class for page interactions
 │   ├── fixtures
-│   │   └── customFixture.ts      # Custom fixture setup for Playwright tests
+│   │   └── Fixture.ts      # Custom fixture setup for Playwright tests
 │   └── data
 │       └── testData.json         # JSON file containing test data
 ├── tests

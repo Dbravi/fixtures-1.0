@@ -28,7 +28,7 @@
 
 //Callable fixture
 import { test as base } from '@playwright/test';
-import { FormPage } from '../pages/form.page';
+import { FormPage } from '../pages/formPage';
 import { faker } from '@faker-js/faker';
 
 type MyFixtures = {
@@ -38,7 +38,7 @@ type MyFixtures = {
 export const test = base.extend<MyFixtures>({
     fillPracticeForm: async ({ page }, use) => {
         const run = async () => {
-            console.log('2')
+            console.log('begin fillPracticeForm');
             const formPage = new FormPage(page);
             await formPage.fillFirstName(faker.person.firstName());
             await formPage.fillLastName(faker.person.lastName());
@@ -47,12 +47,11 @@ export const test = base.extend<MyFixtures>({
             await formPage.fillMobile(faker.string.numeric(10));
             await formPage.fillAddress(faker.location.streetAddress());
             await formPage.submit();
-            console.log('end 2');
-            test.expect(1).toBe(1); // simple assertion to ensure the auto fixture runs
+            console.log('end fillPracticeForm');
         };
 
         await use(run); // this makes it available inside the test
-        console.log('tierdown 2')
+        console.log('tierdown fillPracticeForm');
 
     },
 });

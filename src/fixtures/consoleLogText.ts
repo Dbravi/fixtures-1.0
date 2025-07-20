@@ -6,12 +6,10 @@ type MyFixtures = {
 
 export const test = base.extend<MyFixtures>({
     consoleLogSomeText: async ({ }: any, use: () => any) => {
-        console.log('hello world')
+        console.log('consoleLogSomeText being')
         await use();
-        console.log('hello world teardown')
-        test.expect('test').toBeDefined()
+        console.log('consoleLogSomeText teardown')
     },
-
 });
 
 

@@ -1,5 +1,5 @@
 import { test as base } from '@playwright/test';
-import { DashboardPage } from '../pages/dashboard.page';
+import { DashboardPage } from '../pages/dashboardPage';
 
 export type DashboardOptions = {
     section: string;
@@ -20,16 +20,16 @@ export const test = base.extend<DashboardFixtures>({
     ],
 
     selectDashboardOptions: [async ({ page, dashboardOptions }, use) => {
-        console.log('1')
+        console.log('begin Auto run selectDashboardOptions');
 
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goto();
         await dashboardPage.navigateToSection(dashboardOptions.section);
         await dashboardPage.navigateToSubSection(dashboardOptions.subSection);
-        console.log('end 1')
+        console.log('end Auto run selectDashboardOptions');
 
         await use(dashboardPage);
-        console.log('tierdown 1')
+        console.log('tierdown selectDashboardOptions');
 
     }, { auto: true }
     ]
