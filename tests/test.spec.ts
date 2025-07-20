@@ -3,6 +3,7 @@ import testData from '../src/data/testData.json';
 const { submitSuccess } = testData.validations.practiceForm;
 
 // Test uses global fixture to navigate to the Forms section and fill the Practice Form using named fixture
+// Auto run test fixture `dashboardOptions` can be customized by passing options to `test.use
 // Console logs are added to track the flow of the test and fixture execution
 
 test.use({
