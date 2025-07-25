@@ -1,17 +1,16 @@
 import { test as base } from '@playwright/test';
 
 type MyFixtures = {
-    consoleLogSomeText: any
+    consoleLogSomeText: any;
 };
 
 export const test = base.extend<MyFixtures>({
-    consoleLogSomeText: async ({ }: any, use: () => any) => {
-        console.log('consoleLogSomeText being')
+    consoleLogSomeText: async ({}: any, use: () => any) => {
+        console.log('consoleLogSomeText being');
         await use();
-        console.log('consoleLogSomeText teardown')
+        console.log('consoleLogSomeText teardown');
     },
 });
-
 
 // Base test extending version
 

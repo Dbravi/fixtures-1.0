@@ -1,39 +1,39 @@
 {
-  "users": [
-    {
-      "username": "testuser1",
-      "password": "password123",
-      "email": "testuser1@example.com"
+    "users": [
+        {
+            "username": "testuser1",
+            "password": "password123",
+            "email": "testuser1@example.com"
+        },
+        {
+            "username": "testuser2",
+            "password": "password456",
+            "email": "testuser2@example.com"
+        }
+    ],
+    "validations": {
+        "practiceForm": {
+            "submitSuccess": "Thanks for submitting the form"
+        }
     },
-    {
-      "username": "testuser2",
-      "password": "password456",
-      "email": "testuser2@example.com"
-    }
-  ],
-  "validations": {
-    "practiceForm": {
-      "submitSuccess": "Thanks for submitting the form"
-    }
-  },
-  "formInputs": [
-    {
-      "fieldName": "firstName",
-      "value": "John"
-    },
-    {
-      "fieldName": "lastName",
-      "value": "Doe"
-    }
-  ],
-  "expectedResults": [
-    {
-      "description": "Successful login",
-      "result": "Welcome, testuser1!"
-    },
-    {
-      "description": "Failed login",
-      "result": "Invalid credentials"
-    }
-  ]
+    "formInputs": [
+        {
+            "fieldName": "firstName",
+            "value": "John"
+        },
+        {
+            "fieldName": "lastName",
+            "value": "Doe"
+        }
+    ],
+    "expectedResults": [
+        {
+            "description": "Successful login",
+            "result": "Welcome, testuser1!"
+        },
+        {
+            "description": "Failed login",
+            "result": "Invalid credentials"
+        }
+    ]
 }

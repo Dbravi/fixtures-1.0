@@ -1,7 +1,7 @@
 import { type Page } from '@playwright/test';
 
 export class FormPage {
-    constructor(private page: Page) { }
+    constructor(private page: Page) {}
 
     // Navigation methods
     async goto() {

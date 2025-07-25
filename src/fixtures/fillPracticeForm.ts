@@ -52,7 +52,5 @@ export const test = base.extend<MyFixtures>({
 
         await use(run); // this makes it available inside the test
         console.log('tierdown fillPracticeForm');
-
     },
 });
-

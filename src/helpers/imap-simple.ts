@@ -12,8 +12,8 @@ const config = {
         tlsOptions: {
             rejectUnauthorized: false, // 👈 disables cert validation
         },
-        authTimeout: 5000
-    }
+        authTimeout: 5000,
+    },
 };
 
 export type EmailData = {
@@ -75,7 +75,7 @@ export async function getLatestEmailAll(): Promise<EmailData | null> {
     };
 }
 
-async function deleteEmailsFrom(senderEmail: string) {
+export async function deleteEmailsFrom(senderEmail: string) {
     const connection = await imaps.connect(config);
     await connection.openBox('INBOX');
 
@@ -84,18 +84,20 @@ async function deleteEmailsFrom(senderEmail: string) {
 
     // Filter messages from the given sender email
     const uidsToDelete = messages
-        .filter(message => {
-            const headerPart = message.parts.find(part => part.which === 'HEADER');
+        .filter((message) => {
+            const headerPart = message.parts.find((part) => part.which === 'HEADER');
             if (!headerPart) return false;
             const fromList = headerPart.body.from || [];
             // fromList is an array of strings, check if any matches senderEmail
+
             return fromList.some((from: string) => from.toLowerCase().includes(senderEmail.toLowerCase()));
         })
-        .map(message => message.attributes.uid);
+        .map((message) => message.attributes.uid);
 
     if (uidsToDelete.length === 0) {
         console.log(`No emails from ${senderEmail} found to delete.`);
-        await connection.end();
+        connection.end();
+
         return;
     }
 
@@ -103,7 +105,7 @@ async function deleteEmailsFrom(senderEmail: string) {
     await connection.deleteMessage(uidsToDelete);
     console.log(`Deleted ${uidsToDelete.length} emails from ${senderEmail}.`);
 
-    await connection.end();
+    connection.end();
 }
 
 export async function deleteLastEmails(count: number) {
@@ -114,18 +116,20 @@ export async function deleteLastEmails(count: number) {
 
     if (messages.length === 0) {
         console.log('No emails found to delete.');
-        await connection.end();
+        connection.end();
+
         return;
     }
 
     // Get the last `count` emails (or fewer if not enough)
     const emailsToDelete = messages.slice(-count);
 
-    const uidsToDelete = emailsToDelete.map(msg => msg.attributes.uid);
+    const uidsToDelete = emailsToDelete.map((msg) => msg.attributes.uid);
 
     if (uidsToDelete.length === 0) {
         console.log('No emails matched for deletion.');
-        await connection.end();
+        connection.end();
+
         return;
     }
 
@@ -133,7 +137,7 @@ export async function deleteLastEmails(count: number) {
 
     console.log(`Deleted ${uidsToDelete.length} email(s).`);
 
-    await connection.end();
+    connection.end();
 }
 
 export async function deleteLastEmailsWithSubject(count: number) {
@@ -144,24 +148,26 @@ export async function deleteLastEmailsWithSubject(count: number) {
 
     if (messages.length === 0) {
         console.log('No emails found to delete.');
-        await connection.end();
+        connection.end();
+
         return;
     }
 
     // Get the last `count` emails (or fewer if not enough)
     const emailsToDelete = messages.slice(-count);
 
-    const uidsToDelete = emailsToDelete.map(msg => msg.attributes.uid);
+    const uidsToDelete = emailsToDelete.map((msg) => msg.attributes.uid);
 
     if (uidsToDelete.length === 0) {
         console.log('No emails matched for deletion.');
-        await connection.end();
+        connection.end();
+
         return;
     }
 
     // Log subject and from for each email
-    emailsToDelete.forEach(msg => {
-        const headerPart = msg.parts.find(part => part.which === 'HEADER');
+    emailsToDelete.forEach((msg) => {
+        const headerPart = msg.parts.find((part) => part.which === 'HEADER');
         const header = headerPart?.body;
 
         const subject = Array.isArray(header?.subject) ? header.subject[0] : '(no subject)';
@@ -173,5 +179,5 @@ export async function deleteLastEmailsWithSubject(count: number) {
     await connection.deleteMessage(uidsToDelete);
     console.log(`Deleted ${uidsToDelete.length} email(s).`);
 
-    await connection.end();
+    connection.end();
 }

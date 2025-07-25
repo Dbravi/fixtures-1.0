@@ -24,22 +24,22 @@ my-playwright-project
 
 1. **Clone the repository:**
 
-   ```bash
-   git clone <repository-url>
-   cd my-playwright-project
-   ```
+    ```bash
+    git clone <repository-url>
+    cd my-playwright-project
+    ```
 
 2. **Install dependencies:**
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 3. **Run the tests:**
 
-   ```bash
-   npx playwright test
-   ```
+    ```bash
+    npx playwright test
+    ```
 
 ## Usage Examples
 
