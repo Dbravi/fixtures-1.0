@@ -1,0 +1,8 @@
+node_modules
+
+# Ignore artifacts:
+tmp
+reports
+
+# Ignore CI config files:
+*.yml
