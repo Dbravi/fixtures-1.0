@@ -1,5 +1,5 @@
 import { test } from '../src/fixtures/mergeFixtures';
-import testData from '../src/data/testData.json'  with { type: 'json' };
+import testData from '../src/data/testData.json' with { type: 'json' };
 const { submitSuccess } = testData.validations.practiceForm;
 import { getLatestEmailAll, deleteLastEmailsWithSubject } from '../src/helpers/imap-simple';
 
