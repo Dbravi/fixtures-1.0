@@ -18,11 +18,9 @@ export default defineConfig({
             {
                 outputFile: 'results/test-results.xml',
                 embedAnnotationsAsProperties: true,
-
-                // Not used by Testmo
-                // embedAttachmentsAsProperty: undefined
             },
         ],
+        ['html', { outputFolder: 'playwright-report' }],
     ],
     projects: [
         {
