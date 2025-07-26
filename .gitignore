@@ -34,4 +34,8 @@ coverage/
 # Misc
 .idea/
 
-./test-results
+# Ignore all test results and run artifacts
+results/
+test-results/
+**/.last-run.json
+**/test-results.xml

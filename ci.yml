@@ -1,0 +1,58 @@
+# .github/workflows/playwright-tests.yml
+
+name: Playwright E2E Tests
+
+on:
+  # Trigger on push to the default branch (e.g., 'main' or 'master')
+  push:
+    branches:
+      - main # Or your default branch name like 'master'
+
+  # Trigger on pull requests targeting the default branch
+  pull_request:
+    branches:
+      - main # Or your default branch name like 'master'
+
+  # Trigger on a schedule for nightly builds (e.g., 3 AM UTC every day)
+  schedule:
+    - cron: '0 3 * * *' # Minute (0-59) Hour (0-23) Day_of_month (1-31) Month (1-12) Day_of_week (0-6, 0=Sunday)
+                       # Times are in UTC. Adjust 3 AM UTC to your desired local nightly time.
+
+jobs:
+  playwright-tests:
+    runs-on: ubuntu-latest # Use a GitHub-hosted runner (Ubuntu)
+
+    container: # Run the tests inside a Playwright Docker container
+      image: mcr.microsoft.com/playwright/python:v1.44.0-jammy # Or mcr.microsoft.com/playwright/node:lts for Node.js/TS/JS
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Action to checkout your repository code
+
+      - name: Install dependencies (if using Node.js/TypeScript/JavaScript)
+        # Only include this step if your Playwright project is Node.js-based
+        # If using Python, your base image might already have pip, or you'd use pip install
+        run: npm install
+
+      # Playwright browsers are typically pre-installed in the Playwright Docker images.
+      # If you're using a generic Node.js/Python image without Playwright pre-installed,
+      # you'd need a step like:
+      # - name: Install Playwright browsers (if not in base image)
+      #   run: playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npm test # Or `playwright test` directly if you don't have a script in package.json
+
+      - name: Upload Playwright Report (on failure or always)
+        if: always() # Uploads artifacts even if the previous step failed
+        uses: actions/upload-artifact@v4 # Action to upload test reports
+        with:
+          name: playwright-report
+          path: playwright-report/ # Adjust to where your Playwright HTML report is generated
+
+      - name: Upload Test Results (e.g., JUnit XML)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results/ # Adjust to where your Playwright JUnit XML or other results are generated
