@@ -10,7 +10,7 @@ export default defineConfig({
     use: {
         headless: true,
         actionTimeout: 0,
-        trace: 'on-first-retry',
+        trace: 'on',
         baseURL: 'https://demoqa.com/',
     },
     reporter: [
