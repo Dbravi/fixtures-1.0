@@ -26,21 +26,13 @@
         "@playwright/test": "1.54.1",
         "dotenv": "17.2.0",
         "imap-simple": "^5.1.0",
-        "lodash": "^4.17.21",
         "mailparser": "^3.7.4",
-        "papaparse": "^5.5.3",
-        "typescript": "5.8.3",
-        "wait-on": "8.0.3",
-        "wallee": "^4.7.0"
+        "typescript": "5.8.3"
     },
     "devDependencies": {
         "@stylistic/eslint-plugin": "5.2.0",
         "@types/imap-simple": "^4.2.10",
-        "@types/lodash": "^4.17.20",
-        "@types/mailparser": "^3.4.6",
         "@types/node": "24.0.14",
-        "@types/papaparse": "^5.3.16",
-        "@types/pg": "8.15.4",
         "eslint": "9.31.0",
         "eslint-plugin-playwright": "2.2.0",
         "prettier": "3.6.2",
