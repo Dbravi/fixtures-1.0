@@ -9,7 +9,7 @@ export interface NavigationOptions {
 }
 
 export class DashboardPage {
-    constructor(private page: Page) { }
+    constructor(private page: Page) {}
 
     /**
      * Navigates to the root page

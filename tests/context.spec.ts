@@ -2,7 +2,7 @@ import { test, chromium } from '@playwright/test';
 
 test('Two independent users visit different pages', async () => {
     const browser = await chromium.launch({ headless: true });
-    0.
+
     // User A
     const contextA = await browser.newContext();
     const pageA = await contextA.newPage();
@@ -22,7 +22,6 @@ test('Two independent users visit different pages', async () => {
 
     await browser.close();
 });
-
 
 test('Mode B: Two independent users visit different pages', async ({ browser }) => {
     // User A
@@ -45,7 +44,6 @@ test('Mode B: Two independent users visit different pages', async ({ browser }) 
     await contextA.close();
     await contextB.close();
 });
-
 
 test('Same user opens new tab to interact with different sections', async () => {
     const browser = await chromium.launch({ headless: true });
