@@ -66,3 +66,22 @@ test('Same user opens new tab to interact with different sections', async () => 
 
     await browser.close();
 });
+
+test('User uses fixture page, Admin uses separate context', async ({ page, browser }) => {
+    // User (built-in page fixture)
+    await page.goto('https://demoqa.com/text-box');
+    await page.fill('#userName', 'User Bob');
+    await page.fill('#userEmail', 'user.bob@example.com');
+
+    // Admin (separate browser context and page)
+    const adminContext = await browser.newContext();
+    const adminPage = await adminContext.newPage();
+    await adminPage.goto('https://demoqa.com/text-box');
+    await adminPage.fill('#userName', 'Admin Alice');
+    await adminPage.fill('#userEmail', 'admin.alice@example.com');
+
+    await page.waitForTimeout(3000);
+    await adminPage.waitForTimeout(3000);
+
+    await adminContext.close();
+});

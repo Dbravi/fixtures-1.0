@@ -14,17 +14,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Pull Playwright Docker image v1.54.1
-        run: docker pull mcr.microsoft.com/playwright:v1.54.1-noble
+      - name: Build custom Playwright Docker image
+        run: docker build -t my-playwright-image .
 
-      - name: Run tests in Playwright Docker container
+      - name: Run tests in custom Playwright Docker container
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/app \
             -v ${{ github.workspace }}/playwright-report:/app/playwright-report \
             -w /app \
-            mcr.microsoft.com/playwright:v1.54.1-noble \
-            bash -c "npm ci && npx playwright install chromium && npx playwright test --reporter=html --reporter=list --quiet"
+            my-playwright-image
 
       - name: Upload Playwright Report
         uses: actions/upload-artifact@v4
