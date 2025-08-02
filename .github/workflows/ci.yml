@@ -21,6 +21,7 @@ jobs:
         run: |
           docker run --rm \
             -v ${{ github.workspace }}:/app \
+            -v ${{ github.workspace }}/playwright-report:/app/playwright-report \
             -w /app \
             mcr.microsoft.com/playwright:v1.54.1-noble \
             bash -c "npm ci && npx playwright install chromium && npx playwright test --reporter=html --reporter=list --quiet"
@@ -30,4 +31,4 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
-          retention-days: 30
+          retention-days: 3
