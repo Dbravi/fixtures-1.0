@@ -22,7 +22,7 @@ jobs:
           docker run --rm \
             -v ${{ github.workspace }}:/app \
             -w /app \
-            mcr.microsoft.com/playwright:v1.54.1-focal \
+            mcr.microsoft.com/playwright:v1.54.1-noble \
             bash -c "npm ci && npx playwright install chromium --with-deps && npx playwright test --reporter=html --reporter=list --quiet"
 
       - name: Upload Playwright Report
