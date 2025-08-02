@@ -3,35 +3,31 @@
     "version": "1.0.0",
     "author": "DB",
     "license": "UNLICENSED",
-    "description": "e2e tests for Wallee portal and plugins",
+    "description": "e2e tests",
     "private": true,
     "engines": {
         "node": ">=22.17.1"
     },
-    "type": "module",
     "scripts": {
         "prepare": "cp -R ./scripts/hooks/pre-commit ./.git/hooks/ && chmod +x ./.git/hooks/pre-commit",
         "types-check": "tsc --noemit",
         "prettier": "prettier . --check",
         "prettier-format": "prettier . --write",
         "lint": "npm run types-check && eslint . && npm run prettier",
-        "lint:fix": "eslint . --fix && npm run prettier-format",
+        "lint:fix": "eslint . --fix; npm run prettier-format",
         "delete:reports": "rm -r reports/* || true",
         "show-report": "npx playwright show-report reports/html",
         "pretest": "tsc --noEmit",
         "test": "playwright test"
     },
     "dependencies": {
-        "@faker-js/faker": "9.9.0",
+        "@faker-js/faker": "^9.9.0",
         "@playwright/test": "1.54.1",
         "dotenv": "17.2.0",
-        "imap-simple": "^5.1.0",
-        "mailparser": "^3.7.4",
         "typescript": "5.8.3"
     },
     "devDependencies": {
         "@stylistic/eslint-plugin": "5.2.0",
-        "@types/imap-simple": "^4.2.10",
         "@types/node": "24.0.14",
         "eslint": "9.31.0",
         "eslint-plugin-playwright": "2.2.0",

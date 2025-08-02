@@ -41,6 +41,6 @@ export default tseslint.config(
     },
     {
         // Ignore specific files and directories globally
-        ignores: ['eslint.config.mjs', 'reports/', 'node_modules/', 'playwright-report/'],
+        ignores: ['eslint.config.mjs', 'playwright-report/', 'node_modules/'],
     },
 );

@@ -1,3 +1,16 @@
-#!/bin/sh
-echo "Running pre-commit hook"
-npm run lint:fix
+#!/bin/bash
+
+CURRENT_DIR=$(pwd)
+
+if git diff --name-only --cached | grep -q "fixtures/"; then
+  echo "Running linter"
+  if npm run lint; then
+    echo "Linting succesful! Proceeding with commit"
+  else
+    echo "Linting failed! Please fix the issues before committing."
+    exit 1
+  fi
+fi
+
+exit 0
+
