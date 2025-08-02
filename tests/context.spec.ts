@@ -19,8 +19,6 @@ test('Two independent users visit different pages', async () => {
 
     await pageA.waitForTimeout(3000);
     await pageB.waitForTimeout(3000);
-
-    await browser.close();
 });
 
 test('Mode B: Two independent users visit different pages', async ({ browser }) => {
