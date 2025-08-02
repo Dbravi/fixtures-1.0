@@ -8,9 +8,8 @@ export default defineConfig({
         timeout: 20000,
     },
     use: {
-        headless: true,
         actionTimeout: 0,
-        trace: 'on',
+        trace: 'off',
         baseURL: 'https://demoqa.com/',
     },
     reporter: [

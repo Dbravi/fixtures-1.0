@@ -15,4 +15,4 @@ RUN npm ci
 COPY . .
 
 # Default command to run tests
-CMD ["npx", "playwright", "test", "--reporter=html,list,quiet"]
+CMD ["npx", "playwright", "test", "--reporter=html"]
