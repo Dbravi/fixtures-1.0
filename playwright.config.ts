@@ -2,31 +2,30 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
     testDir: 'tests',
-    timeout: 30000,
+    timeout: 5000,
 
     expect: {
-        timeout: 20000,
+        timeout: 5000,
     },
     use: {
         actionTimeout: 0,
         trace: 'off',
         baseURL: 'https://demoqa.com/',
     },
-    reporter: [
-        [
-            'junit',
-            {
-                outputFile: 'results/test-results.xml',
-                embedAnnotationsAsProperties: true,
-            },
-        ],
-        ['html', { outputFolder: 'playwright-report' }],
-    ],
+    reporter: [['blob']],
 
     projects: [
         {
             name: 'chromium',
             use: { browserName: 'chromium' },
         },
+        // {
+        //     name: 'firefox',
+        //     use: { browserName: 'firefox' },
+        // },
+        // {
+        //     name: 'webkit',
+        //     use: { browserName: 'webkit' },
+        // },
     ],
 });
